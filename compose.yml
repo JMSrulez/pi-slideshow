@@ -1,0 +1,16 @@
+services:
+  picshow:
+    image: picshow:latest
+    container_name: picshow
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+    volumes:
+      # seulement pour écrire la vidéo finale lisible par VLC kiosk
+      - /home/dlp:/home/dlp
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_RUN_PORT=5000
+      - PI_SLIDESHOW_TITLE=Belle De Mai - Lobby
+networks: {}
