@@ -41,7 +41,8 @@ pi@myhost:~/pi-slideshow $ tree
 └── templates  
     └── index.html  
 
-L'application elle meme tiens dans ces 2 fichiers, docker est optionel mais pratique car il contiens les bon module python.
+L'application elle meme tiens dans ces 2 fichiers app.py et index.html, docker est optionel mais pratique car il contiens les bon module python.
+
 Depuis le dossier :~/pi-slideshow  
 ├── Dockerfile  
 ├── requirements.txt  
