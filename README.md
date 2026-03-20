@@ -11,7 +11,7 @@ Utilise ffmpeg pour generer de video de 1 à 60s et ensuite concatene l'ensemble
 - `Dockerfile` : image Docker
 - `requirements.txt` : dépendances Python
 
-### Warning !
+## Warning !
 
 path to video is hardcoded at the moment...
 As pi is intended to run as kiosk mode and autologin, may be the file in home directory of docker user might be best one.
