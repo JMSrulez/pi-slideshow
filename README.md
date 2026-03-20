@@ -25,6 +25,9 @@ environment:
 
 ## Warning !
 
+## Démarrage rapide
+
+```bash
 path to video is hardcoded at the moment...
 As pi is intended to run as kiosk mode and autologin, may be the file in home directory of docker user might be best one.
 For sure I will add as docker parameter
