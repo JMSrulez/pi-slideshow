@@ -23,7 +23,7 @@ environment:
       - FLASK_RUN_PORT=5000
       - PI_SLIDESHOW_TITLE=Lobby TV slideshow
 
-**Warning !**
+## Warning !
 
 path to video is hardcoded at the moment...
 As pi is intended to run as kiosk mode and autologin, may be the file in home directory of docker user might be best one.
