@@ -33,7 +33,7 @@ environment:
       - FLASK_RUN_PORT=5000
       - PI_SLIDESHOW_TITLE=Lobby TV slideshow
 ```
-
+---
 ## Architecture
 pi@myhost:~/pi-slideshow $ tree
 .
@@ -42,11 +42,11 @@ pi@myhost:~/pi-slideshow $ tree
     └── index.html
 
 L'application elle meme tiens dans ces 2 fichiers, docker est optionel mais pratique car il contiens les bon module python.
-
+Depuis le dossier :~/pi-slideshow 
 ├── Dockerfile
 ├── requirements.txt
 
 ```bash
-
+docker build -t picshow:latest .
 ```
 
