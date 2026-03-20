@@ -15,3 +15,5 @@ Le raspberry pi utiliser pour teste et developper est un pi 3B+, j'ai mis une r�
 la pauvre machine à du mal à afficher des video HD.
 Le pi 3B+ ne coutant pas plus de 20 à 30$, cela fait une solution local déconnecté d'internet (si besoin) à bas prix.
 
+Dockeriser VLC n'est pas conseillé, c'est très penible de passé d'un docker à l'affichage distant, j'ai abandonné l'idée et de toute facon c'est indépendant du générateur de slide show. il faut juste avoir le chemin du fichier à projeter en commun. 
+
