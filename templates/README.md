@@ -7,7 +7,7 @@ Proceed as following :
 - Change duration
 - Generate video
 - Preview video is success (if failed, it keep latest video in place)
-        * case of failure if raspberry can't process too big pictures
+-> case of failure if raspberry can't process too big pictures
 
 
 <img src="./ScreenShot.png" width="800" height="600">   
