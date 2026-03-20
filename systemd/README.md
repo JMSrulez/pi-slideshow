@@ -9,7 +9,7 @@ sudo systemctl enable --now vlc-kiosk.service
 Adaptez dans /etc/systemd/system/vlc-kiosk.service les lignes :
 
 ** text
-User=pi
-Group=pi
-Environment=DISPLAY=:0
-Environment=VIDEO_PATH=/home/pi/video_pi3_photos.mp4
+ - User=pi
+ - Group=pi
+ - Environment=DISPLAY=:0
+ - Environment=VIDEO_PATH=/home/pi/video_pi3_photos.mp4
