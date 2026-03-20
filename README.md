@@ -21,4 +21,9 @@ environment:
       - FLASK_APP=app.py
       - FLASK_RUN_HOST=0.0.0.0
       - FLASK_RUN_PORT=5000
-      - PI_SLIDESHOW_TITLE=Lobby TV slideshow 
+      - PI_SLIDESHOW_TITLE=Lobby TV slideshow
+
+**Warning !**
+
+path to video is hardcoded at the moment...
+As pi is intended to run as kiosk mode and autologin, may be the file in home directory of docker user might be best one.
