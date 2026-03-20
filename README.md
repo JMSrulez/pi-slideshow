@@ -23,9 +23,7 @@ environment:
       - FLASK_RUN_PORT=5000
       - PI_SLIDESHOW_TITLE=Lobby TV slideshow
 
-## Warning !
-
-## Démarrage rapide
+### Warning !
 
 ```bash
 path to video is hardcoded at the moment...
