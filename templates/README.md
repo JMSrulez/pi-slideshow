@@ -2,7 +2,7 @@
 
 Proceed as following :
 - Open webpage on the raspberry   http://ip:5000
-- Select then Load pictures jpeg or png (tested successfuly)
+- Select then Load pictures jpeg or png (even mixed, tested successfuly)
 - Reorganize order by swaping pictures
 - Change duration
 - Generate video
