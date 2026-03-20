@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>{{ app_title }}</title>
+  
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    .item {
+      display: inline-block;
+      margin: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .thumb {
+      display: block;
+      width: 180px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 5px;
+      background: #eee;
+    }
+    #images { margin-top: 15px; }
+  </style>
+</head>
+<body>
+  <h1>{{ app_title }}</h1>  
+
+  <h2>Uploader des images</h2>
+  <form id="uploadForm">
+    <input type="file" name="files" multiple accept="image/png,image/jpeg,image/jpg">
+    <button type="submit">Uploader</button>
+  </form>
+
+  <h2>Images (ordre actuel)</h2>
+  <div id="images"></div>
+
+  <button id="generateBtn">Générer la vidéo</button>
+
+  <button id="clearBtn">Supprimer toutes les images</button>
+
+  <span id="status"></span>
+
+  <div id="preview" style="margin-top:15px; border-top:1px solid #ccc; padding-top:10px;">
+    <h3>Vidéo actuelle</h3>
+    <div id="preview-info">Aucune vidéo générée pour le moment.</div>
+    <div id="preview-video"></div>
+  </div>
+
+
+
+
+  <script>
+    // Liste initiale envoyée par Flask
+    const initialFiles = {{ files|tojson|safe }};
+    let items = initialFiles.map(f => ({ file: f, duration: 3 }));
+
+    const imagesDiv = document.getElementById('images');
+
+      function render() {
+      imagesDiv.innerHTML = '';
+      items.forEach((it, idx) => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.draggable = true;
+        div.dataset.idx = idx;
+
+        div.innerHTML = `
+          <div>
+            #${idx + 1} - ${it.file}
+            <button type="button" class="del-btn" data-file="${it.file}">✕</button>
+          </div>
+          <img class="thumb" src="/uploads/${encodeURIComponent(it.file)}">
+          <div>
+            Durée (s) :
+            <input type="number" min="1" max="60"
+                   value="${it.duration}"
+                   data-idx="${idx}" class="dur-input">
+          </div>
+        `;
+        imagesDiv.appendChild(div);
+      });
+    }
+
+
+    // Premier rendu
+    render();
+
+    // Upload multiple
+    document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const res = await fetch('/upload', { method: 'POST', body: fd });
+      const data = await res.json();
+      (data.files || []).forEach(name => {
+        items.push({ file: name, duration: 3 });
+      });
+      render();
+      e.target.reset();
+    });
+
+    // Mise à jour des durées
+    imagesDiv.addEventListener('change', (e) => {
+      if (e.target.classList.contains('dur-input')) {
+        const idx = parseInt(e.target.dataset.idx, 10);
+        const v = parseInt(e.target.value, 10);
+        items[idx].duration = (v >= 1 && v <= 60) ? v : 3;
+        e.target.value = items[idx].duration;
+      }
+    });
+
+    // Drag & drop réordonnable
+    let dragIndex = null;
+
+    imagesDiv.addEventListener('dragstart', (e) => {
+      const item = e.target.closest('.item');
+      if (!item) return;
+      dragIndex = parseInt(item.dataset.idx, 10);
+      e.dataTransfer.effectAllowed = 'move';
+    });
+
+    imagesDiv.addEventListener('dragover', (e) => {
+      e.preventDefault(); // nécessaire pour autoriser drop
+      e.dataTransfer.dropEffect = 'move';
+    });
+
+    imagesDiv.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const targetItem = e.target.closest('.item');
+      if (!targetItem || dragIndex === null) return;
+      const dropIndex = parseInt(targetItem.dataset.idx, 10);
+      if (dropIndex === dragIndex) return;
+
+      // réordonne le tableau items
+      const moved = items.splice(dragIndex, 1)[0];
+      items.splice(dropIndex, 0, moved);
+      dragIndex = null;
+      render();
+    });
+
+    imagesDiv.addEventListener('dragend', () => {
+      dragIndex = null;
+    });
+
+    // Suppression d'une image
+    imagesDiv.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('del-btn')) {
+        const file = e.target.dataset.file;
+        if (!confirm(`Supprimer ${file} ?`)) return;
+
+        // appel API backend
+        const res = await fetch('/delete', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ file })
+        });
+        const data = await res.json();
+        if (!res.ok || data.status !== 'ok') {
+          alert('Erreur suppression: ' + (data.error || 'inconnue'));
+          return;
+        }
+
+        // retire localement
+        items = items.filter(it => it.file !== file);
+        render();
+      }
+    });
+
+
+
+
+    const statusSpan = document.getElementById('status');
+    const genBtn = document.getElementById('generateBtn');
+
+genBtn.addEventListener('click', async () => {
+  const itemsToSend = items.map(it => ({ file: it.file, duration: it.duration }));
+
+  statusSpan.style.color = 'black';
+  statusSpan.textContent = `Préparation (${itemsToSend.length} images)...`;
+
+  try {
+    const res = await fetch('/generate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: itemsToSend }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || data.status !== 'ok') {
+      statusSpan.style.color = 'red';
+      if (data.step === 'segment') {
+        statusSpan.textContent =
+          `Erreur ffmpeg (image ${ (data.index || 0) + 1 }/${itemsToSend.length })`;
+      } else if (data.step === 'concat') {
+        statusSpan.textContent = 'Erreur ffmpeg lors de la concaténation';
+      } else {
+        statusSpan.textContent = data.error || 'Erreur de génération vidéo';
+      }
+      return;
+    }
+
+    statusSpan.style.color = 'green';
+    statusSpan.textContent =
+      `Vidéo générée (${data.segments} segments) – ${formatSize(data.size)} – ${data.mtime}`;
+
+    await loadVideoInfo?.();
+
+  } catch (e) {
+    statusSpan.style.color = 'red';
+    statusSpan.textContent = 'Erreur réseau / serveur pendant la génération';
+  }
+});
+ 
+    const clearBtn = document.getElementById('clearBtn');
+
+    clearBtn.addEventListener('click', async () => {
+      if (!confirm("Supprimer TOUTES les images ?")) return;
+
+      const res = await fetch('/delete_all', { method: 'POST' });
+      const data = await res.json();
+      if (!res.ok || data.status !== 'ok') {
+        alert('Erreur suppression: ' + (data.error || 'inconnue'));
+        return;
+      }
+      items = [];
+      render();
+    });
+
+    // --- Aperçu vidéo existante ---
+    const previewInfo = document.getElementById('preview-info');
+    const previewVideoDiv = document.getElementById('preview-video');
+
+    function formatSize(bytes) {
+      if (bytes === 0) return "0 B";
+      const k = 1024;
+      const units = ["B", "KB", "MB", "GB"];
+      let i = 0;
+      let v = bytes;
+      while (v >= k && i < units.length - 1) {
+        v /= k;
+        i++;
+      }
+      return v.toFixed(1) + " " + units[i];
+    }
+
+    async function loadVideoInfo() {
+      try {
+        const res = await fetch('/video_info');
+        if (!res.ok) {
+          previewInfo.textContent = "Impossible de récupérer les infos vidéo.";
+          return;
+        }
+        const data = await res.json();
+        if (!data.exists) {
+          previewInfo.textContent = "Aucune vidéo générée pour le moment.";
+          previewVideoDiv.innerHTML = "";
+          return;
+        }
+        previewInfo.textContent =
+          `Taille : ${formatSize(data.size)} – générée le ${data.mtime}`;
+
+        // mini lecteur vidéo (thumbnail animé cliquable)
+        previewVideoDiv.innerHTML = `
+          <video width="320" controls preload="metadata">
+            <source src="/video" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo HTML5.
+          </video>
+        `;
+      } catch (e) {
+        previewInfo.textContent = "Erreur lors du chargement de la vidéo.";
+      }
+    }
+
+    // charger l'aperçu au chargement de la page
+    loadVideoInfo();
+
+
+
+
+  </script>
+
+</body>
+</html>
