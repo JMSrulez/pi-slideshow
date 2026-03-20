@@ -36,10 +36,10 @@ environment:
 ---
 ## Architecture
 pi@myhost:~/pi-slideshow $ tree
-.
-├── app.py
-└── templates
-    └── index.html
+.  
+├── app.py  
+└── templates  
+    └── index.html  
 
 L'application elle meme tiens dans ces 2 fichiers, docker est optionel mais pratique car il contiens les bon module python.
 Depuis le dossier :~/pi-slideshow 
