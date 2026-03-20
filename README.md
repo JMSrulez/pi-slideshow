@@ -32,4 +32,21 @@ environment:
       - FLASK_RUN_HOST=0.0.0.0
       - FLASK_RUN_PORT=5000
       - PI_SLIDESHOW_TITLE=Lobby TV slideshow
+```
+
+## Architecture
+pi@myhost:~/pi-slideshow $ tree
+.
+├── app.py
+└── templates
+    └── index.html
+
+L'application elle meme tiens dans ces 2 fichiers, docker est optionel mais pratique car il contiens les bon module python.
+
+├── Dockerfile
+├── requirements.txt
+
+```bash
+
+```
 
