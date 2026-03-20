@@ -7,10 +7,11 @@ services:
       - 5000:5000
     volumes:
       # seulement pour écrire la vidéo finale lisible par VLC kiosk
-      - /home/dlp:/home/dlp
+      - /home/pi:/home/pi
     environment:
       - FLASK_APP=app.py
       - FLASK_RUN_HOST=0.0.0.0
       - FLASK_RUN_PORT=5000
-      - PI_SLIDESHOW_TITLE=Belle De Mai - Lobby
+      # Pour identifier sur quel ecran on crée et affiche la video
+      - PI_SLIDESHOW_TITLE=Lobby Display 1
 networks: {}
