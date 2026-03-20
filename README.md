@@ -52,7 +52,7 @@ Depuis le dossier :~/pi-slideshow
 docker build -t picshow:latest .
 ```
 
-Deploy your container
+Deploy your container  
 ├── compose.yml
 ```bash
 docker compose -f compose.yml up -d
