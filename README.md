@@ -25,7 +25,7 @@ For sure I will add as docker parameter
 
 ```bash
 docker build -t pi-slideshow .
-docker run --rm -p 5000:5000 -v /home/dlp:/home/dlp pi-slideshow
+docker run --rm -p 5000:5000 -v /home/pi:/home/pi pi-slideshow
 
 environment:
       - FLASK_APP=app.py
