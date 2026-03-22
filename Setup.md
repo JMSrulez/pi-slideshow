@@ -58,11 +58,11 @@ Vous devez voir un message « Hello from Docker! ».
 4. **Cloner le dépôt pi‑slideshow**
 Connecté en tant qu'utilisateur slideshow :
 
-   ```bash
+  ```bash
 cd ~
 git clone https://github.com/JMSrulez/pi-slideshow.git
 cd pi-slideshow
-   ```
+  ```
 
 5. **Construire et lancer le container**
 Depuis le dossier ~/pi-slideshow :
