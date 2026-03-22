@@ -3,7 +3,7 @@
 ## Overview
 Pi Slideshow is a simple photo slideshow program for the Raspberry Pi. This guide will help you install and run the application quickly and effectively.
 
-## 0. Pré‑requis
+0. **Pré‑requis**
 - Raspberry Pi OS **Bullseye** 
 - Wi‑Fi configuré.  
 - SSH activé.
