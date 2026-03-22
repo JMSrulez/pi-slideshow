@@ -5,7 +5,7 @@ Pi Slideshow is a simple photo slideshow program for the Raspberry Pi. This guid
 To run on Raspberry PI 3B+ version process have been adjusted, so you can use cheap refurbished legacy rasperry pi.
 
 0. **Pré‑requis**
-- Raspberry Pi OS **Bullseye** 
+- Raspberry Pi OS **Bullseye** (use latest version on RPi 4 or 5)
 - Wi‑Fi configuré.  
 - SSH activé.
 
