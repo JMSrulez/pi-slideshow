@@ -15,4 +15,6 @@ Time estimated to generate video is 8 to 10 second by picture with 3 second dura
 10 photo 1m45s  
 25 photo 2m50s  
 
+---
+
 <img src="./ScreenShot.png" width="800" height="600">   
