@@ -66,10 +66,9 @@ cd pi-slideshow
 
 5. **Construire et lancer le container**
 Depuis le dossier ~/pi-slideshow :
-
-   ```bash
+  ```bash
 docker build -t pi-slideshow .
-   ```
+  ```
 Sur un Raspberry Pi, la construction peut prendre plusieurs minutes (par exemple ~10 minutes, testé sur une install fraiche à 596s).
 
 Lancez ensuite l’application :
