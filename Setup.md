@@ -118,7 +118,7 @@ Depuis le dossier du projet :
   ```bash
 cd ~/pi-slideshow
 sudo cp systemd/vlc-kiosk.service /etc/systemd/system/vlc-kiosk.service
-  ```bash
+  ```
 Adapter l’utilisateur et le chemin vidéo
 
 Éditer le fichier de service :
