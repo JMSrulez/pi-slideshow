@@ -86,3 +86,84 @@ L’application sera accessible sur :
 http://<ip_du_pi>:5000 (par exemple http://192.168.1.42:5000).
 
 6. **Exemple de script pour afficher la video généré en boucle**
+Copier le script exemple dans /usr/local/bin :
+  ```bash
+sudo cp scripts/vlc-kiosk.sh /usr/local/bin/vlc-kiosk.sh
+  ```
+Rendre le script exécutable :
+  ```bash
+sudo chmod +x /usr/local/bin/vlc-kiosk.sh
+  ```
+Vérifier ou adapter les variables du script
+
+Ouvrir le script avec un éditeur de texte :
+  ```bash
+sudo nano /usr/local/bin/vlc-kiosk.sh
+
+Vérifier les lignes suivantes au début du fichier :
+  ```bash
+VIDEO_PATH="${VIDEO_PATH:-/home/slideshow/video_pi3_photos.mp4}"
+DISPLAY_VALUE="${DISPLAY_VALUE:-:0}"
+  ```
+VIDEO_PATH : chemin complet de la vidéo générée par pi-slideshow.
+Par défaut : /home/slideshow/video_pi3_photos.mp4
+
+DISPLAY_VALUE : display X11 utilisé par la session graphique.
+Sur un Raspberry Pi classique : :0
+
+7. **Creer un service pour lancer VLC au démmarage**
+Copier le service dans /etc/systemd/system
+
+Depuis le dossier du projet :
+  ```bash
+cd ~/pi-slideshow
+sudo cp systemd/vlc-kiosk.service /etc/systemd/system/vlc-kiosk.service
+  ```bash
+Adapter l’utilisateur et le chemin vidéo
+
+Éditer le fichier de service :
+  ```bash
+sudo nano /etc/systemd/system/vlc-kiosk.service
+  ```
+Vérifier et adapter ces lignes :
+  ```bash
+[Service]
+User=slideshow
+Group=slideshow
+Environment=DISPLAY=:0
+Environment=VIDEO_PATH=/home/slideshow/video_pi3_photos.mp4
+ExecStart=/usr/local/bin/vlc-kiosk.sh
+Restart=always
+RestartSec=5
+  ```
+User / Group : l’utilisateur qui ouvre la session graphique (par exemple slideshow).
+
+DISPLAY : doit correspondre au display de la session X (en général :0).
+
+VIDEO_PATH : doit être le même que dans le script, et pointer sur la vidéo générée par pi-slideshow.
+
+Recharger systemd et activer le service
+Exécuter :
+  ```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now vlc-kiosk.service
+  ```
+Vérifier le fonctionnement
+Vérifier l’état du service :
+  ```bash
+systemctl status vlc-kiosk.service
+  ```
+Le service doit être “active (running)”.
+
+Si une vidéo valide existe déjà à l’emplacement VIDEO_PATH, VLC doit démarrer et l’afficher en boucle sur l’écran connecté au Raspberry Pi.
+
+En cas de problème, consulter les logs :
+  ```bash
+journalctl -u vlc-kiosk.service -e
+  ```
+Fonctionnement avec pi-slideshow
+L’application pi-slideshow (dans Docker) écrit la vidéo finale dans le fichier configuré dans VIDEO_PATH (par défaut : /home/slideshow/video_pi3_photos.mp4).
+
+Le script vlc-kiosk.sh attend que ce fichier existe et ait une taille non nulle, puis lance VLC en boucle dessus.
+
+Quand une nouvelle vidéo est générée par pi-slideshow (fichier remplacé de manière atomique), VLC redémarre automatiquement au prochain problème de lecture ou lors d’un redémarrage du service, et diffuse la nouvelle version.
