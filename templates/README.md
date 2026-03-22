@@ -10,10 +10,12 @@ Proceed as following :
 - Preview video is success (if failed, it keep latest video in place)
 
 Time estimated to generate video is 8 to 10 second by picture with 3 second duration,  
-* 3 photo 30s  
-* 6 photo 60s  
-* 10 photo 1m45s  
-* 25 photo 2m50s  
+*   3 photo 30s  
+*   6 photo 60s  
+*  10 photo 1m45s  
+*  25 photo 2m50s
+* 100 photo 13m10s
+* 400 photo 46m30s  
 
 ---
 
