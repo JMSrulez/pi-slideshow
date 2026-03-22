@@ -85,3 +85,4 @@ docker run -d \
 L’application sera accessible sur :
 http://<ip_du_pi>:5000 (par exemple http://192.168.1.42:5000).
 
+6. **Exemple de script pour afficher la video généré en boucle**
