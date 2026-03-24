@@ -32,11 +32,12 @@ sudo usermod -aG sudo slideshow
    ```
 
 3. **Installer Docker sur le Raspberry Pi**
-Ouvrez un terminal (toujours sur le Pi) :
-   ```bash
+Ouvrez un terminal (toujours sur le Pi) :  
+  ```bash
 sudo apt update
 sudo apt upgrade -y
-   ```
+  ```
+
 Installez Docker avec le script officiel :
    ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
