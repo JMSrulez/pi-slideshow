@@ -25,18 +25,18 @@ sudo usermod -aG sudo slideshow
  ```
 
 2. **Update the Package List**  
-   Run the following command to ensure all your packages are up-to-date:
-   ```bash
-   sudo apt update
-   sudo apt upgrade
-   ```
+Run the following command to ensure all your packages are up-to-date:
+```bash
+sudo apt update
+sudo apt upgrade
+```
 
 3. **Installer Docker sur le Raspberry Pi**  
 Installez Docker avec le script officiel :  
-  ```bash
+```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
-  ```
+```
 
 Ajoutez ensuite l’utilisateur slideshow au groupe docker pour pouvoir lancer les containers sans sudo :
    ```bash
