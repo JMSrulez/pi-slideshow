@@ -84,17 +84,18 @@ http://<ip_du_pi>:5000 (par exemple http://192.168.1.42:5000).
 6. **Exemple de script pour afficher la video généré en boucle**
 Copier le script exemple dans /usr/local/bin :
   ```bash
-sudo cp scripts/vlc-kiosk.sh /usr/local/bin/vlc-kiosk.sh
+sudo cp scripts/vlc-kiosk.sh /usr/local/bin/mpv-kiosk.sh
   ```
 Rendre le script exécutable :
   ```bash
-sudo chmod +x /usr/local/bin/vlc-kiosk.sh
+sudo chmod +x /usr/local/bin/mpv-kiosk.sh
   ```
 Vérifier ou adapter les variables du script
 
 Ouvrir le script avec un éditeur de texte :
-  ```bash
-sudo nano /usr/local/bin/vlc-kiosk.sh
+```bash
+sudo nano /usr/local/bin/mpv-kiosk.sh
+```
 
 Vérifier les lignes suivantes au début du fichier :
   ```bash
