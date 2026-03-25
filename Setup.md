@@ -108,18 +108,18 @@ Par défaut : /home/slideshow/video_pi3_photos.mp4
 DISPLAY_VALUE : display X11 utilisé par la session graphique.
 Sur un Raspberry Pi classique : :0
 
-7. **Creer un service pour lancer VLC au démmarage**  
+7. **Creer un service pour lancer MPV au démmarage**  
 
 Copier le service dans /etc/systemd/system  
 Depuis le dossier du projet :
   ```bash
 cd ~/pi-slideshow
-sudo cp systemd/vlc-kiosk.service /etc/systemd/system/vlc-kiosk.service
+sudo cp systemd/mpv-kiosk.service /etc/systemd/system/mpv-kiosk.service
   ```
 Adapter l’utilisateur et le chemin vidéo  
 Éditer le fichier de service :
   ```bash
-sudo nano /etc/systemd/system/vlc-kiosk.service
+sudo nano /etc/systemd/system/mpv-kiosk.service
   ```
 Vérifier et adapter ces lignes :
   ```bash
