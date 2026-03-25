@@ -1,4 +1,4 @@
-**Installer le service systemd  
+## Installer le service systemd  
 
 ```bash
 sudo cp systemd/mpv-kiosk.service /etc/systemd/system/mpv-kiosk.service
