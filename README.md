@@ -24,7 +24,7 @@ For sure I will add as docker parameter one day...
 
 ```bash
 docker build -t picshow:latest .
-docker run --rm -p 5000:5000 -v /home/pi:/home/pi picshow:latest
+docker run --rm -p 5000:5000 -v /home/slideshow:/home/slideshow picshow:latest
 
 environment:
       - FLASK_APP=app.py
