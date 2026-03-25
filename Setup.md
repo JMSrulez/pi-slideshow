@@ -142,16 +142,16 @@ Recharger systemd et activer le service
 Exécuter :
   ```bash
 sudo systemctl daemon-reload
-sudo systemctl enable --now vlc-kiosk.service
+sudo systemctl enable --now mpv-kiosk.service
   ```
 Vérifier le fonctionnement
 Vérifier l’état du service :
   ```bash
-systemctl status vlc-kiosk.service
+systemctl status mpv-kiosk.service
   ```
 Le service doit être “active (running)”.
 
-Si une vidéo valide existe déjà à l’emplacement VIDEO_PATH, VLC doit démarrer et l’afficher en boucle sur l’écran connecté au Raspberry Pi.
+Si une vidéo valide existe déjà à l’emplacement VIDEO_PATH, MPV doit démarrer et l’afficher en boucle sur l’écran connecté au Raspberry Pi.
 
 En cas de problème, consulter les logs :
   ```bash
@@ -160,6 +160,6 @@ journalctl -u mpv-kiosk.service -e
 Fonctionnement avec pi-slideshow
 L’application pi-slideshow (dans Docker) écrit la vidéo finale dans le fichier configuré dans VIDEO_PATH (par défaut : /home/slideshow/video_pi3_photos.mp4).
 
-Le script vlc-kiosk.sh attend que ce fichier existe et ait une taille non nulle, puis lance VLC en boucle dessus.
+Le script mpv-kiosk.sh attend que ce fichier existe et ait une taille non nulle, puis lance MPV en boucle dessus.
 
-Quand une nouvelle vidéo est générée par pi-slideshow (fichier remplacé de manière atomique), VLC redémarre automatiquement au prochain problème de lecture ou lors d’un redémarrage du service, et diffuse la nouvelle version.
+Quand une nouvelle vidéo est générée par pi-slideshow (fichier remplacé de manière atomique), MPV redémarre automatiquement au prochain problème de lecture ou lors d’un redémarrage du service, et diffuse la nouvelle version.
