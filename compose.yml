@@ -7,7 +7,7 @@ services:
       - 5000:5000
     volumes:
       # seulement pour écrire la vidéo finale lisible par VLC kiosk
-      - /home/pi:/home/pi
+      - /home/slideshow:/home/slideshow
     environment:
       - FLASK_APP=app.py
       - FLASK_RUN_HOST=0.0.0.0
