@@ -12,14 +12,13 @@ Utilise ffmpeg pour generer de video de 1 à 60s et ensuite concatene l'ensemble
 - `requirements.txt` : dépendances Python
 
 ```bash
-VLC Kiosk mode is a quick way to display video on raspberry pi in loop from existing file into home directory of the auto loggin user
-It is just a basic linux service running a vlc command line to main display. You can follow instruction into script and systemd folder.
+MPV Kiosk mode (could be VLC) is a quick way to display video on raspberry pi in loop from existing file into home directory of the auto loggin user. It is just a basic linux service running a mpv command line to main display. You can follow instruction into script and systemd folder.
 ```
 ## Warning !
 
 path to video is hardcoded at the moment...
 As pi is intended to run as kiosk mode and autologin, may be the file in home directory of docker user might be best one.
-For sure I will add as docker parameter
+For sure I will add as docker parameter one day...
 
 ## Démarrage rapide
 
