@@ -11,10 +11,11 @@ is_generating = False
 
 APP_TITLE = os.environ.get("PI_SLIDESHOW_TITLE", "Pi Slideshow")
 HOME_FOLDER = os.environ.get("HOME_FOLDER", "/home/slideshow")
+SHOWFILE = os.environ.get("SHOWFILE", "video_pi3_photos.mp4")
 
-VIDEO_PATH = "/home/slideshow/video_pi3_photos.mp4"
+VIDEO_PATH = HOME_FOLDER + "/" + SHOWFILE
 UPLOAD_FOLDER = "/tmp/uploads"          # interne au container
-OUTPUT_VIDEO = "/home/slideshow/video_pi3_photos.mp4"
+OUTPUT_VIDEO = VIDEO_PATH
 ALLOWED_EXT = {"png", "jpg", "jpeg"}
 
 
@@ -147,8 +148,8 @@ def generate():
                 # chemin échappé pour ffmpeg concat demuxer
                 f.write(f"file '{p}'\n")
 
-        tmp_video = "/home/slideshow/video_pi3_photos.tmp.mp4"
-        final_video = "/home/slideshow/video_pi3_photos.mp4"
+        tmp_video = HOME_FOLDER + "/" + SHOWFILE" + ".tmp"      
+        final_video = HOME_FOLDER + "/" + SHOWFILE"
 
         if os.path.exists(tmp_video):
             os.remove(tmp_video)
@@ -200,8 +201,8 @@ def generate():
 
     except Exception as e:
         print("Exception during generation:", str(e), flush=True)
-        if os.path.exists("/home/slideshow/video_pi3_photos.tmp.mp4"):
-            os.remove("/home/slideshow/video_pi3_photos.tmp.mp4")
+        if os.path.exists(SHOWFILE):
+            os.remove(tmp_video)
         is_generating = False
         generate_lock.release()
         return jsonify({"error": str(e)}), 500
