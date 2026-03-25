@@ -3,8 +3,8 @@ Description=MPV Kiosk pour pi-slideshow
 After=graphical.target
 
 [Service]
-User=dlp
-Group=dlp
+User=slideshow
+Group=slideshow
 Environment=DISPLAY=:0
 Environment=VIDEO_PATH=/home/slideshow/video_pi3_photos.mp4
 Environment=XDG_RUNTIME_DIR=/run/user/1001
