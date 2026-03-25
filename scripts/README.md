@@ -4,6 +4,7 @@ you can try vlc but I switched to mpv dur to issues with video stack of x11 and 
 ### 1. Installer le script
 
 ```bash
+sudo apt install -y mpv inoty
 sudo cp scripts/mpv-kiosk.sh /usr/local/bin/mpv-kiosk.sh
 sudo chmod +x /usr/local/bin/mpv-kiosk.sh
 ```
