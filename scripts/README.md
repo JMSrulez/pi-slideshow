@@ -13,8 +13,7 @@ variables d’environnement VIDEO_PATH et DISPLAY_VALUE dans le
 fichier ou via le service systemd.
 
 ### 2. Limitation
-Le raspberry pi utiliser pour teste et developper est un pi 3B+, j'ai mis une résoltion des video raisonable 1280x720 pour eviter les lag.
-la pauvre machine à du mal à afficher des video HD.
+Le raspberry pi utilisé pour teste et developper est un pi 3B+ avec 1Go de RAM, j'ai mis une résoltion des video raisonable 1280x720 pour eviter les lag. la pauvre machine à du mal à afficher des video HD.
 Le pi 3B+ ne coutant pas plus de 20 à 30$, cela fait une solution local autonome déconnecté d'internet (si besoin) à bas prix.
 
 ### 3. Commentaire
