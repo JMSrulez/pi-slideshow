@@ -3,7 +3,7 @@
 # - lit la vidéo en boucle plein écran
 # - quand la vidéo change, tue mpv et sort pour que systemd relance le service
 
-VIDEO_PATH="${VIDEO_PATH:-/home/dlp/video_pi3_photos.mp4}"
+VIDEO_PATH="${VIDEO_PATH:-/home/slideshow/video_pi3_photos.mp4}"
 DISPLAY_VALUE="${DISPLAY_VALUE:-:0}"
 
 export DISPLAY="$DISPLAY_VALUE"
