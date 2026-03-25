@@ -84,7 +84,7 @@ http://<ip_du_pi>:5000 (par exemple http://192.168.1.42:5000).
 6. **Exemple de script pour afficher la video généré en boucle**
 Copier le script exemple dans /usr/local/bin :
   ```bash
-sudo cp scripts/vlc-kiosk.sh /usr/local/bin/mpv-kiosk.sh
+sudo cp scripts/mpv-kiosk.sh /usr/local/bin/mpv-kiosk.sh
   ```
 Rendre le script exécutable :
   ```bash
@@ -155,7 +155,7 @@ Si une vidéo valide existe déjà à l’emplacement VIDEO_PATH, VLC doit déma
 
 En cas de problème, consulter les logs :
   ```bash
-journalctl -u vlc-kiosk.service -e
+journalctl -u mpv-kiosk.service -e
   ```
 Fonctionnement avec pi-slideshow
 L’application pi-slideshow (dans Docker) écrit la vidéo finale dans le fichier configuré dans VIDEO_PATH (par défaut : /home/slideshow/video_pi3_photos.mp4).
