@@ -1,10 +1,10 @@
- Installer le service systemd
+**Installer le service systemd
 
-** bash
-
+'''bash
 sudo cp systemd/vlc-kiosk.service /etc/systemd/system/vlc-kiosk.service
 sudo systemctl daemon-reload
 sudo systemctl enable --now vlc-kiosk.service
+'''
 
 Adaptez dans /etc/systemd/system/vlc-kiosk.service les lignes :
 
