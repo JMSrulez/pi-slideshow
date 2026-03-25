@@ -1,0 +1,16 @@
+[Unit]
+Description=MPV Kiosk pour pi-slideshow
+After=graphical.target
+
+[Service]
+User=dlp
+Group=dlp
+Environment=DISPLAY=:0
+Environment=VIDEO_PATH=/home/dlp/video_pi3_photos.mp4
+Environment=XDG_RUNTIME_DIR=/run/user/1001
+ExecStart=/usr/local/bin/mpv-kiosk.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=graphical.target
