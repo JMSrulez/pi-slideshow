@@ -9,8 +9,8 @@ sudo systemctl enable --now mpv-kiosk.service
 Adaptez dans /etc/systemd/system/mpv-kiosk.service les lignes :
 
 ```bash
-User=pi
-Group=pi
+User=slideshow
+Group=slideshow
 Environment=DISPLAY=:0
-Environment=VIDEO_PATH=/home/pi/video_pi3_photos.mp4
+Environment=VIDEO_PATH=/home/slideshow/video_pi3_photos.mp4
 ```
