@@ -10,6 +10,8 @@ generate_lock = Lock()
 is_generating = False
 
 APP_TITLE = os.environ.get("PI_SLIDESHOW_TITLE", "Pi Slideshow")
+HOME_FOLDER = os.environ.get("HOME_FOLDER", "/home/slideshow")
+
 VIDEO_PATH = "/home/slideshow/video_pi3_photos.mp4"
 UPLOAD_FOLDER = "/tmp/uploads"          # interne au container
 OUTPUT_VIDEO = "/home/slideshow/video_pi3_photos.mp4"
