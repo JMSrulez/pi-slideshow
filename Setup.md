@@ -128,7 +128,7 @@ User=slideshow
 Group=slideshow
 Environment=DISPLAY=:0
 Environment=VIDEO_PATH=/home/slideshow/video_pi3_photos.mp4
-ExecStart=/usr/local/bin/vlc-kiosk.sh
+ExecStart=/usr/local/bin/mpv-kiosk.sh
 Restart=always
 RestartSec=5
   ```
