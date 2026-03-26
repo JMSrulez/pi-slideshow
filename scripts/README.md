@@ -1,10 +1,12 @@
 ## Mode kiosk MPV (exemple Raspberry Pi)
 you can try vlc but I switched to mpv dur to issues with video stack of x11 and MMAL
 
+for this installation user must be sudoer but it is not mandatory to use the slideshow user.
+
 ### 1. Installer le script
 
 ```bash
-sudo apt install -y mpv inotifywait
+sudo apt install -y mpv inotify-tools
 sudo cp scripts/mpv-kiosk.sh /usr/local/bin/mpv-kiosk.sh
 sudo chmod +x /usr/local/bin/mpv-kiosk.sh
 ```
