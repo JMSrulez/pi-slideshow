@@ -148,8 +148,8 @@ def generate():
                 # chemin échappé pour ffmpeg concat demuxer
                 f.write(f"file '{p}'\n")
 
-        tmp_video = HOME_FOLDER + "/" + SHOWFILE" + ".tmp"      
-        final_video = HOME_FOLDER + "/" + SHOWFILE"
+        tmp_video = HOME_FOLDER + "/" + SHOWFILE + ".tmp.mp4"
+        final_video = HOME_FOLDER + "/" + SHOWFILE
 
         if os.path.exists(tmp_video):
             os.remove(tmp_video)
@@ -201,7 +201,7 @@ def generate():
 
     except Exception as e:
         print("Exception during generation:", str(e), flush=True)
-        if os.path.exists(SHOWFILE):
+        if os.path.exists(tmp_video):
             os.remove(tmp_video)
         is_generating = False
         generate_lock.release()
