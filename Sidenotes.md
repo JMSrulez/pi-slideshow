@@ -9,8 +9,12 @@ crazymax/cloudflared: A multi-arch image specifically noted for supporting ARM d
 milgradesec/cloudflared: A modified image designed to run as a limited user, available on Docker Hub and GitHub Container Registry
 
 ## Basic routing to setup new raspberry PI
+As Wifi is setup first boot, you may get ip from command
+* ip a
+
 Run raspi-config then
 * update Hostname,
 * expand file system
 * switch off screen blanking (important for kiosk mode)
 * activate ssh
+
