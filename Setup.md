@@ -75,6 +75,8 @@ docker run -d \
   -p 5000:5000 \
   -v /home/slideshow:/home/slideshow \
   -e PI_SLIDESHOW_TITLE="Pi Slideshow - Écran 1" \
+  -e HOME_FOLDER="/home/slideshow" \
+  -e SHOWFILE="video_pi3_photos.mp4" \
   pi-slideshow
    ```
 
