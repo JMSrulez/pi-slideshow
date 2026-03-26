@@ -2,6 +2,19 @@
 you can try vlc but I switched to mpv dur to issues with video stack of x11 and MMAL
 
 for this installation user must be sudoer but it is not mandatory to use the slideshow user.
+### 0. Prerequis
+Le user "slideshow" doit etre en autologin pour le mode kiosk
+```bash
+sudo nano /etc/lightdm/lightdm.conf
+
+changer les lignes suivante :
+
+#autologin-guest=false
+autologin-user=slideshow
+autologin-user-timeout=0
+#autologin-in-background=false
+```
+
 
 ### 1. Installer le script
 
