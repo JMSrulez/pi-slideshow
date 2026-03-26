@@ -22,7 +22,7 @@ Les autres questions (Nom, etc.) peuvent être laissées vides (Entrée).
 Optionnel : ajouter l’utilisateur au groupe sudo pour lui donner des droits d’administration :
  ```bash
 sudo usermod -aG sudo slideshow
- ```
+```
 
 2. **Update the Package List**  
 Run the following command to ensure all your packages are up-to-date:
@@ -43,6 +43,7 @@ Ajoutez ensuite l’utilisateur slideshow au groupe docker pour pouvoir lancer l
 sudo usermod -aG docker slideshow
    ```
 Déconnectez‑vous / reconnectez‑vous (ou redémarrez) pour que le groupe soit pris en compte.
+utiliser le compte slideshow comme compte du kiosk (ou un autre...)
 
 Vérifiez que Docker fonctionne :
 
@@ -53,7 +54,6 @@ Vous devez voir un message « Hello from Docker! ».
 
 4. **Cloner le dépôt pi‑slideshow**
 Connecté en tant qu'utilisateur slideshow :
-
   ```bash
 cd ~
 git clone https://github.com/JMSrulez/pi-slideshow.git
