@@ -53,25 +53,25 @@ Verify that Docker is working:
    ```bash
 docker run hello-world
    ```
-Vous devez voir un message « Hello from Docker! ».
+You should see a "Hello from Docker! ".
 
-4. **Cloner le dépôt pi‑slideshow**
-Connecté en tant qu'utilisateur slideshow :
+4. **Clone pi‑slideshow**
+repository Logged in as a slideshow user:
   ```bash
 cd ~
 git clone https://github.com/JMSrulez/pi-slideshow.git
 cd pi-slideshow
   ```
 
-5. **Construire et lancer le container**
-Depuis le dossier ~/pi-slideshow :
+5. **Build and launch the container**
+From the ~/pi-slideshow folder:
   ```bash
 docker build -t pi-slideshow .
   ```
-Sur un Raspberry Pi, la construction peut prendre plusieurs minutes (par exemple ~10 minutes, testé sur une install fraiche à 596s).
+On a Raspberry Pi, construction can take several minutes (for example ~10 minutes, tested on a fresh install at 596s).
+It depends mainly on speed of the SD card.
 
-Lancez ensuite l’application :
-
+Then start pi-slideshow container
    ```bash
 docker run -d \
   --name pi-slideshow \
