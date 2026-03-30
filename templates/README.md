@@ -18,7 +18,7 @@ Time estimated to generate video is 8 to 10 second by picture with 3 second dura
 * 400 photo 46m30s  
 ---
 
-This web page has been tested on several WIndows 11 browser (brave, chrome, Edge), on Android phone and Iphone (safari). On phones, It filter screenshots either jpeg or png not directly HEIC of webm picture.
+This web page has been tested on several Windows 11 browser (brave, chrome, Edge), on Android phone and Iphone (safari). On phones, It filter screenshots either jpeg or png not directly HEIC of webm picture.
 
 ---
 
