@@ -7,8 +7,8 @@ To run on Raspberry PI 3B+ version process have been adjusted, so you can use ch
 
 0. **Pré‑requis**
 - Raspberry Pi OS **Bullseye** (for Pi 3B+... better use latest version on RPi 4 or 5)
-- Wi‑Fi configuré.  
-- SSH activé.
+- Wi‑Fi setup (or ETH as you like).  
+- SSH activated.
 
 ## Installation Steps
 
