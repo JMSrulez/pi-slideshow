@@ -3,23 +3,22 @@
 Small Flask + Docker server to create a video slideshow from images and stream it in kiosk mode on a Raspberry Pi 3B+.  
 Use ffmpeg to generate a video from 1 to 60s and then concatenate everything, the objective is not to saturate the 1Go RAM.
 
-## Contenu
+## Content
 
-- `app.py` : application Flask
-- `templates/index.html` : interface web
-- `Dockerfile` : image Docker
-- `requirements.txt` : dépendances Python
+- `app.py` : Flask application
+- `templates/index.html` : web interface
+- `Dockerfile` : Docker image
+- `requirements.txt` : Python dependency
 
 ```bash
 MPV Kiosk mode (could be VLC) is a quick way to display video on raspberry pi in loop from existing file into home directory of the auto loggin user. It is just a basic linux service running a mpv command line to main display. You can follow instruction into script and systemd folder.
 ```
 ## Warning !
 
-path to video is hardcoded at the moment...
-As pi is intended to run as kiosk mode and autologin, may be the file in home directory of docker user might be best one.
-For sure I will add as docker parameter one day...
+As pi is intended to run as kiosk mode and autologin, I choose video file location in home directory of docker user might be best one.
+You can customize at docker env parameter.  
 
-## Démarrage rapide
+## Quick Start
 
 ```bash
 docker build -t picshow:latest .
@@ -39,10 +38,10 @@ pi@myhost:~/pi-slideshow $ tree
 └── templates  
     └── index.html  
 
-L'application elle meme tiens dans ces 2 fichiers app.py et index.html, docker est optionel mais pratique car il contiens les bon module python.
+The application itself fits into these 2 app.py and index.html files, docker is optional but practical because it contains the right python module.  
 
 ## Docker
-Depuis le dossier :~/pi-slideshow  
+From folder :~/pi-slideshow  
 ├── Dockerfile  
 ├── requirements.txt  
 
