@@ -15,15 +15,15 @@ To run on Raspberry PI 3B+ version process have been adjusted, so you can use ch
 
 ## Installation Steps
 
-1. **Créer l’utilisateur dédié**
-Connecté en pi (ou un autre utilisateur admin) :
+1. **Create dedicated user**  
+Connected in pi (or another admin user):  
  ```bash
 sudo adduser slideshow
  ```
-Choisissez un mot de passe pour slideshow.
-Les autres questions (Nom, etc.) peuvent être laissées vides (Entrée).
+Choose a password for slideshow.  
+Other questions (Name, etc.) can be left blank (Enter).
 
-Optionnel : ajouter l’utilisateur au groupe sudo pour lui donner des droits d’administration :
+Optional: add the user to the sudo group to give it administrative rights:
  ```bash
 sudo usermod -aG sudo slideshow
 ```
@@ -35,8 +35,8 @@ sudo apt update
 sudo apt upgrade
 ```
 
-3. **Installer Docker sur le Raspberry Pi**  
-Installez Docker avec le script officiel :  
+3. **Install Docker on the Raspberry Pi**  
+Install Docker with the official script:  
 ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
