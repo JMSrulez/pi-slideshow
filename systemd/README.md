@@ -6,13 +6,13 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now mpv-kiosk.service
 ```
 
-Un exemple de situation pour connaitre les groupes et l'id
+An example of a situation to know the groups and the id
 ```bash
 ~/pi-slideshow $ id
 uid=1001(slideshow) gid=1001(slideshow) groupes=1001(slideshow),27(sudo),995(docker)
 ```
 
-Adaptez dans /etc/systemd/system/mpv-kiosk.service les lignes :
+Adapt the lines in /etc/systemd/system/mpv-kiosk.service:
 ```bash
 User=slideshow
 Group=slideshow
