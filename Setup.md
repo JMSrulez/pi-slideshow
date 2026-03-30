@@ -83,35 +83,32 @@ docker run -d \
   pi-slideshow
    ```
 
-L’application sera accessible sur :
-http://<ip_du_pi>:5000 (par exemple http://192.168.1.42:5000).
+The application will be accessible at: http://<ip_of_pi>:5000 (for example http://192.168.1.42:5000).
 
-6. **Exemple de script pour afficher la video généré en boucle**
-Copier le script exemple dans /usr/local/bin :
+6. **Example script to display the generated video in a loop**
+Copy the example script to /usr/local/bin:
   ```bash
 sudo cp scripts/mpv-kiosk.sh /usr/local/bin/mpv-kiosk.sh
   ```
-Rendre le script exécutable :
+Make the script executable:
   ```bash
 sudo chmod +x /usr/local/bin/mpv-kiosk.sh
   ```
-Vérifier ou adapter les variables du script
-
+Check or adapt script variables:
 Ouvrir le script avec un éditeur de texte :
 ```bash
 sudo nano /usr/local/bin/mpv-kiosk.sh
 ```
-
-Vérifier les lignes suivantes au début du fichier :
+Check the following lines at the beginning of the file:
   ```bash
 VIDEO_PATH="${VIDEO_PATH:-/home/slideshow/video_pi3_photos.mp4}"
 DISPLAY_VALUE="${DISPLAY_VALUE:-:0}"
   ```
 VIDEO_PATH : chemin complet de la vidéo générée par pi-slideshow.
-Par défaut : /home/slideshow/video_pi3_photos.mp4
+Default value : /home/slideshow/video_pi3_photos.mp4
 
 DISPLAY_VALUE : display X11 utilisé par la session graphique.
-Sur un Raspberry Pi classique : :0
+On pi usualy : :0
 
 7. **Creer un service pour lancer MPV au démmarage**  
 
