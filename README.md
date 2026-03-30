@@ -3,9 +3,9 @@
 Small Flask + Docker server to create a video slideshow from images and stream it in kiosk mode on a Raspberry Pi 3B+.  
 Use ffmpeg to generate a video from 1 to 60s and then concatenate everything, the objective is not to saturate the 1Go RAM.
 
-This is not a copy of https://github.com/adafruit/pi_video_looper, this is orginal video maker and looper design for non-IT end users.
+This is not a copy of https://github.com/adafruit/pi_video_looper, this is a fully orginal video maker and looper design for non-IT end users.
 Web interface is ultra simple, user upload jpeg, png, and generate presentation that is display in loop automaticaly. 
-You as IT guy will have to setup services and docker image.
+You, as IT guy will have to setup services and docker image.
 
 ## Content
 
