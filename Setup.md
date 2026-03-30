@@ -42,15 +42,14 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 
-Ajoutez ensuite l’utilisateur slideshow au groupe docker pour pouvoir lancer les containers sans sudo :
+Then add the slideshow user to the docker group to be able to launch the containers without sudo:
    ```bash
 sudo usermod -aG docker slideshow
    ```
-Déconnectez‑vous / reconnectez‑vous (ou redémarrez) pour que le groupe soit pris en compte.
-utiliser le compte slideshow comme compte du kiosk (ou un autre...)
+Disconnect‑you /reconnect‑you (or restart) for the group to take effect.  
+use the slideshow account as the kiosk account (or another...)  
 
-Vérifiez que Docker fonctionne :
-
+Verify that Docker is working:
    ```bash
 docker run hello-world
    ```
