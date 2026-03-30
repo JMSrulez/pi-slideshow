@@ -1,7 +1,7 @@
 #!/bin/bash
-# Script kiosk pour mpv sur Raspberry Pi
-# - lit la vidéo en boucle plein écran
-# - quand la vidéo change, tue mpv et sort pour que systemd relance le service
+# Kiosk script for mpv on Raspberry Pi 
+# plays the video in full screen loop 
+# when the video changes, kill mpv and exit so that systemd restarts the service
 
 VIDEO_PATH="${VIDEO_PATH:-/home/slideshow/video_pi3_photos.mp4}"
 DISPLAY_VALUE="${DISPLAY_VALUE:-:0}"
@@ -11,15 +11,15 @@ export DISPLAY="$DISPLAY_VALUE"
 VIDEO_DIR="$(dirname "$VIDEO_PATH")"
 VIDEO_FILE="$(basename "$VIDEO_PATH")"
 
-# Laisser le temps à la session graphique de démarrer
+# Let it open desktop
 sleep 3
 
-# Attendre que la vidéo existe et ne soit pas vide
+# Wait for an existing file
 while [ ! -s "$VIDEO_PATH" ]; do
   sleep 1
 done
 
-# Lancer mpv en arrière-plan
+# Launch mpv in background
 /usr/bin/mpv \
   --fs \
   --loop=inf \
@@ -30,7 +30,7 @@ done
   "$VIDEO_PATH" &
 MPV_PID=$!
 
-# Attendre UN événement sur le dossier, puis vérifier que c'est bien le bon fichier
+# Wait file or folder event
 read DIR EVENT NAME < <(inotifywait -q -e close_write,move,create,delete --format '%w %e %f' "$VIDEO_DIR")
 
 if [ "$NAME" = "$VIDEO_FILE" ]; then
@@ -39,5 +39,5 @@ if [ "$NAME" = "$VIDEO_FILE" ]; then
   wait "$MPV_PID" 2>/dev/null
 fi
 
-# Sortir : systemd relancera le service (et donc un nouveau mpv sur la nouvelle vidéo)
+# Exit in a clean way, the service will relaunch the script
 exit 0
