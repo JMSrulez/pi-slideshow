@@ -6,12 +6,14 @@ services:
     ports:
       - 5000:5000
     volumes:
-      # seulement pour écrire la vidéo finale lisible par VLC kiosk
+      # Persistant storage of the video
       - /home/slideshow:/home/slideshow
     environment:
       - FLASK_APP=app.py
       - FLASK_RUN_HOST=0.0.0.0
       - FLASK_RUN_PORT=5000
-      # Pour identifier sur quel ecran on crée et affiche la video
-      - PI_SLIDESHOW_TITLE=Lobby Display 1
+      - PI_SLIDESHOW_TITLE="Lobby Display 1"
+      - HOME_FOLDER="/home/slideshow"
+      - SHOWFILE="video_pi3_photos.mp4"
+      
 networks: {}
