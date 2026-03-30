@@ -7,7 +7,7 @@ This is not a copy of https://github.com/adafruit/pi_video_looper, this is a ful
 Web interface is ultra simple, user upload jpeg, png, and generate presentation that is display in loop automaticaly. 
 You, as IT guy will have to setup services and docker image.
 
-This project use X1 desktop, it does not use frame buffer solution like https://github.com/jkraemer/pi-slideshow, but it could be possible if you tweek mpv service.
+This project use basic X11 desktop, it does not use frame buffer solution like https://github.com/jkraemer/pi-slideshow, but it could be possible if you tweek mpv service.
 
 ## Content
 
