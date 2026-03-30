@@ -1,8 +1,8 @@
 # pi-slideshow
 
 Petit serveur Flask + Docker pour créer un diaporama vidéo à partir d'images
-et le diffuser en mode kiosk sur un Raspberry Pi 3B+
-Utilise ffmpeg pour generer de video de 1 à 60s et ensuite concatene l'ensemble, l'object est de ne pas saturer les 1Go RAM.
+et le diffuser en mode kiosk sur un Raspberry Pi 3B+.  
+Utilise ffmpeg pour generer une video de 1 à 60s et ensuite concatene l'ensemble, l'object est de ne pas saturer les 1Go RAM.
 
 ## Contenu
 
