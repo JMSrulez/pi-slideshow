@@ -2,7 +2,7 @@
 
 ## Overview
 Pi Slideshow is a simple photo slideshow program for the Raspberry Pi. This guide will help you install and run the application quickly and effectively.
-To run on Raspberry PI 3B+ version process have been adjusted, so you can use cheap refurbished legacy rasperry pi.
+To run on Raspberry PI 3B+ version process have been adjusted, so you can use cheap refurbished legacy rasperry pi.  
 (next step will be english translation....)
 
 0. **Pré‑requis**
